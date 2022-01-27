@@ -98,8 +98,8 @@ def get_model():
     else:
         print("MODEL NOT LOADED")
     #Poniższe dwie linijki były potrzebne do stworzenia modelu i zapisania go do pliku
-        #model = create_trained_model(epochs, train_ds, val_ds)
-        #save_model(model)
+        model = create_trained_model(epochs, train_ds, val_ds)
+        save_model(model)
 
     return model
 
