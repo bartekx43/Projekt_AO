@@ -16,6 +16,6 @@ Aby uruchomić projekt, należy wykonać w terminalu następujące komendy:
 
 ```
 $ pip install -r requirements.txt
-$ sudo apt-get install python3-tk
+$ sudo apt-get install python3-tk python3-pil python3-pil.imagetk
 $ python3 GUI.py
 ```
