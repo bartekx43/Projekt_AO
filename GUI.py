@@ -53,7 +53,7 @@ style.configure("TCombobox", fieldbackground= "#0c2a56", background= "white", fo
 
 
 combo = Combobox(window)
-combo['values']= ('sea', 'forest', 'glacier', 'city', '--choose category--')
+combo['values']= ('sea', 'forest', 'glacier', 'street', '--choose category--')
 combo.current(4) #set the selected item
 combo.place(relx = 0.45, rely = 0.5, anchor = CENTER) 
 
