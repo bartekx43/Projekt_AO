@@ -104,7 +104,7 @@ def evaluate(path, real):
     score = tf.nn.softmax(predictions[0])
 
     print("Obrazek - {} zaklasyfikowany przez program jako {} z {:.2f} pewnością.".format(real, class_names[np.argmax(score)], 100 * np.max(score)))
-    return " {} z {:.2f} pewnością.".format( class_names[np.argmax(score)], 100 * np.max(score))
+    return " {} with {:.2f} confidence.".format( class_names[np.argmax(score)], 100 * np.max(score))
 
 
 def get_model():
