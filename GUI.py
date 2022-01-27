@@ -31,11 +31,10 @@ def clickedImageChoosing():
     
 def clickedSend():
     global inputPictureDefinition
-    #fileNameImageType = Image(fileName)
     print(pathV)
     inputPictureDefinition = combo.get()
     resultString = zad.evaluate(pathV, inputPictureDefinition)
-    textResultLabel.configure(text = "Określiłeś wybrane zdjęcie jako: " + inputPictureDefinition + ". Nasz program wyliczył, że jest to: " + resultString +".",styl = "TButton",  font=('Helvetica 13 bold'))
+    textResultLabel.configure(text = "Określiłeś wybrane zdjęcie jako: " + inputPictureDefinition + ". Nasz program wyliczył, że jest to: " + resultString ,styl = "TButton",  font=('Helvetica 13 bold'))
 
 window = Tk()
 window.attributes("-zoomed", True)
@@ -52,7 +51,7 @@ style.configure("DUPA", foreground="#FFFFFF", background="#0c2a56")
 
 
 combo = Combobox(window)
-combo['values']= ('morze', 'góry', 'las', 'lodowiec', 'miasto', '--wybierz kategorie--')
+combo['values']= ('sea', 'forest', 'glacier', 'city', '--wybierz kategorie--')
 combo.current(5) #set the selected item
 combo.place(relx = 0.45, rely = 0.5, anchor = CENTER) 
 
@@ -75,14 +74,5 @@ textResultLabel = Label(window, text="")
 textResultLabel.place(relx = 0.5, rely = 0.7, anchor = CENTER) 
 
 
-
-#################################333##### moze sie przydac
-#bar = Progressbar(window, length=200, style='black.Horizontal.TProgressbar')
-
-#bar['value'] = 70
-
-#bar.grid(column=2, row=2)
-
-#######################################
 
 window.mainloop()
