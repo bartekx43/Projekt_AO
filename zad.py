@@ -87,6 +87,7 @@ def load_model():
 
 
 def evaluate(path, real):
+    
     model = get_model()
     class_names = ['forest', 'glacier', 'sea', 'street']
     img_height = 150
@@ -98,7 +99,7 @@ def evaluate(path, real):
         test_dir, target_size=(img_height, img_width)
     )
 
-    plt.imshow(img)
+    #plt.imshow(img)
     img_array = tf.keras.utils.img_to_array(img)
     img_array = tf.expand_dims(img_array, 0)
     predictions = model.predict(img_array)
@@ -106,7 +107,7 @@ def evaluate(path, real):
     score = tf.nn.softmax(predictions[0])
 
     print("Obrazek - {} zaklasyfikowany przez program jako {} z {:.2f} pewnością.".format(real, class_names[np.argmax(score)], 100 * np.max(score)))
-    return "Obrazek - {} zaklasyfikowany przez program jako {} z {:.2f} pewnością.".format(real, class_names[np.argmax(score)], 100 * np.max(score))
+    return " {} z {:.2f} pewnością.".format( class_names[np.argmax(score)], 100 * np.max(score))
 
 
 def get_model():
@@ -147,8 +148,8 @@ def get_model():
         print("Model loaded")
     else:
         print("MODEL NOT LOADED")
-        model = create_trained_model(epochs, train_ds, val_ds)
-        save_model(model)
+        #model = create_trained_model(epochs, train_ds, val_ds)
+        #save_model(model)
 
     return model
 
