@@ -1,0 +1,18 @@
+## O projekcie
+Projekt rozpoznający rodzaj krajobrazu ze zdjęciu przy użyciu nauczania maszynowego. Zastosowane kategorie krajobrazu: forest(las), glacier(lodowiec), sea(morze), street(ulica).
+	
+## Technologie
+Projekt został stworzony przy wykorzystaniu technologii:
+* Python version: 3.8.10
+* Tensorflow: 2.7.0
+* Matplotlib: 3.5.1
+* Numpy: 1.22.1
+
+	
+## Uruchomienie
+Aby uruchomić projekt, należy wykonać w terminalu następujące komendy:
+
+```
+$ pip install -r requrements.txt
+$ python3 GUI.py
+```
