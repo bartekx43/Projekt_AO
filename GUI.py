@@ -52,7 +52,7 @@ style.configure("DUPA", foreground="#FFFFFF", background="#0c2a56")
 
 combo = Combobox(window)
 combo['values']= ('sea', 'forest', 'glacier', 'city', '--wybierz kategorie--')
-combo.current(5) #set the selected item
+combo.current(4) #set the selected item
 combo.place(relx = 0.45, rely = 0.5, anchor = CENTER) 
 
 
