@@ -5,7 +5,6 @@ Projekt rozpoznający rodzaj krajobrazu ze zdjęciu przy użyciu nauczania maszy
 Projekt został stworzony przy wykorzystaniu technologii:
 * Python version: 3.8.10
 * Tensorflow: 2.7.0
-* Matplotlib: 3.5.1
 * Numpy: 1.22.1
 * Tkinter 8.6
 * Pillow 8.1.2
