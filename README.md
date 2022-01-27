@@ -11,7 +11,7 @@ Projekt został stworzony przy wykorzystaniu technologii:
 
 	
 ## Uruchomienie
-Aby uruchomić projekt, należy wykonać w terminalu następujące komendy:
+Aby uruchomić projekt, należy wykonać w folderze Projekt_AO następujące komendy:
 
 ```
 $ pip install -r requirements.txt
