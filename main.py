@@ -105,6 +105,8 @@ def evaluate(model, path, real):
     return "Obrazek - {} zaklasyfikowany przez program jako {} z {:.2f} pewnością.".format(real, class_names[np.argmax(score)], 100 * np.max(score))
 
 
+
+
 data_dir = './IMGS'
 data_dir = pathlib.Path(data_dir)
 
