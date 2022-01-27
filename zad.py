@@ -1,17 +1,14 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import os
-import PIL
 import tensorflow as tf
 import pathlib
 
-from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Sequential
 
 
 def create_trained_model(epochs, train_ds, val_ds):
-#komentarz
+
     img_height = 150
     img_width = 150
 
@@ -80,7 +77,7 @@ def save_model(model):
 def load_model():
     try:
         model = tf.keras.models.load_model('models/my_model')
-    except IOError:
+    except:
         print("ERROR: Nie udało się załadować modelu z pliku")
         return False
     return model
