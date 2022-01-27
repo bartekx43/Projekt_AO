@@ -13,6 +13,7 @@ Projekt został stworzony przy wykorzystaniu technologii:
 Aby uruchomić projekt, należy wykonać w terminalu następujące komendy:
 
 ```
-$ pip install -r requrements.txt
+$ pip install -r requirements.txt
+$ sudo apt-get install python3-tk
 $ python3 GUI.py
 ```
