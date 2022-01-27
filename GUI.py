@@ -8,13 +8,12 @@ import zad
 
 
 def resizeForBlackBg(imageName):
-   # global resizedImage
     global pathV
     pathV = imageName
     resizedImage = Image.open(imageName)
     resizedImage = resizedImage.resize((450, 350))
     new_image= ImageTk.PhotoImage(resizedImage)
-    return new_image #, resizedImage
+    return new_image 
 
 
 #tutaj wstawimy elegancko jakies funkcje co sie dzieja po kliknieciu
