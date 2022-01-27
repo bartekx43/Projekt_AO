@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 import pathlib
@@ -44,29 +43,6 @@ def create_trained_model(epochs, train_ds, val_ds):
         validation_data=val_ds,
         epochs=epochs
     )
-
-    acc = history.history['accuracy']
-    val_acc = history.history['val_accuracy']
-
-    loss = history.history['loss']
-    val_loss = history.history['val_loss']
-
-    epochs_range = range(epochs)
-
-    plt.figure(figsize=(8, 8))
-    plt.subplot(1, 2, 1)
-    plt.plot(epochs_range, acc, label='Training Accuracy')
-    plt.plot(epochs_range, val_acc, label='Validation Accuracy')
-    plt.legend(loc='lower right')
-    plt.title('Training and Validation Accuracy')
-
-    plt.subplot(1, 2, 2)
-    plt.plot(epochs_range, loss, label='Training Loss')
-    plt.plot(epochs_range, val_loss, label='Validation Loss')
-    plt.legend(loc='upper right')
-    plt.title('Training and Validation Loss')
-    plt.show()
-
     return model
 
 
@@ -81,30 +57,6 @@ def load_model():
         print("ERROR: Nie udało się załadować modelu z pliku")
         return False
     return model
-
-
-def evaluate(path, real):
-    
-    model = get_model()
-    class_names = ['forest', 'glacier', 'sea', 'street']
-    img_height = 150
-    img_width = 150
-    test_dir = path
-    test_dir = pathlib.Path(test_dir)
-
-    img = tf.keras.utils.load_img(
-        test_dir, target_size=(img_height, img_width)
-    )
-
-    #plt.imshow(img)
-    img_array = tf.keras.utils.img_to_array(img)
-    img_array = tf.expand_dims(img_array, 0)
-    predictions = model.predict(img_array)
-
-    score = tf.nn.softmax(predictions[0])
-
-    print("Obrazek - {} zaklasyfikowany przez program jako {} z {:.2f} pewnością.".format(real, class_names[np.argmax(score)], 100 * np.max(score)))
-    return " {} with {:.2f} confidence.".format( class_names[np.argmax(score)], 100 * np.max(score))
 
 
 def get_model():
@@ -140,13 +92,36 @@ def get_model():
     # Próba załadowania moedlu
     model = load_model()
 
-    # Jeżeli nie ma to liczymy z podanymi parametrami i zpaisujemy do pliku
+    # Jeżeli nie ma to liczymy z podanymi parametrami i zapisujemy do pliku
     if model:
         print("Model loaded")
     else:
         print("MODEL NOT LOADED")
+    #Poniższe dwie linijki były potrzebne do stworzenia modelu i zapisania go do pliku
         #model = create_trained_model(epochs, train_ds, val_ds)
         #save_model(model)
 
     return model
+
+
+def evaluate(path, real):
+    
+    model = get_model()
+    class_names = ['forest', 'glacier', 'sea', 'street']
+    img_height = 150
+    img_width = 150
+    test_dir = path
+    test_dir = pathlib.Path(test_dir)
+
+    img = tf.keras.utils.load_img(
+        test_dir, target_size=(img_height, img_width)
+    )
+
+    img_array = tf.keras.utils.img_to_array(img)
+    img_array = tf.expand_dims(img_array, 0)
+    predictions = model.predict(img_array)
+
+    score = tf.nn.softmax(predictions[0])
+
+    return " {} z {:.2f} pewnością.".format( class_names[np.argmax(score)], 100 * np.max(score))
 
