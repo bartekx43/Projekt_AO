@@ -11,10 +11,16 @@ Projekt został stworzony przy wykorzystaniu technologii:
 
 	
 ## Uruchomienie
+1. Linux
 Aby uruchomić projekt, należy wykonać w folderze Projekt_AO następujące komendy:
 
 ```
+$ git clone https://github.com/bartekx43/Projekt_AO
+$ cd Projekt_AO
 $ pip install -r requirements.txt
 $ sudo apt-get install python3-tk python3-pil python3-pil.imagetk
 $ python3 GUI.py
 ```
+2. Windows (niepełna wersja graficzna)
+Plik wykonywalny znajduje się w archiwum build.zip.
+
