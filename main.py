@@ -11,7 +11,7 @@ from tensorflow.keras.models import Sequential
 
 
 def create_trained_model(epochs, train_ds, val_ds):
-
+#komentarz
     img_height = 150
     img_width = 150
 
