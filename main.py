@@ -86,7 +86,11 @@ def load_model():
     return model
 
 
-def evaluate(model, path, real):
+def evaluate(path, real):
+    model = get_model()
+    class_names = ['forest', 'glacier', 'sea', 'street']
+    img_height = 150
+    img_width = 150
     test_dir = path
     test_dir = pathlib.Path(test_dir)
 
@@ -105,46 +109,46 @@ def evaluate(model, path, real):
     return "Obrazek - {} zaklasyfikowany przez program jako {} z {:.2f} pewnością.".format(real, class_names[np.argmax(score)], 100 * np.max(score))
 
 
+def get_model():
 
+    data_dir = './IMGS'
+    data_dir = pathlib.Path(data_dir)
 
-data_dir = './IMGS'
-data_dir = pathlib.Path(data_dir)
+    batch_size = 32
+    img_height = 150
+    img_width = 150
 
-batch_size = 32
-img_height = 150
-img_width = 150
+    train_ds = tf.keras.utils.image_dataset_from_directory(
+        data_dir,
+        validation_split=0.2,
+        subset="training",
+        seed=123,
+        image_size=(img_height, img_width),
+        batch_size=batch_size)
 
-train_ds = tf.keras.utils.image_dataset_from_directory(
-    data_dir,
-    validation_split=0.2,
-    subset="training",
-    seed=123,
-    image_size=(img_height, img_width),
-    batch_size=batch_size)
+    val_ds = tf.keras.utils.image_dataset_from_directory(
+        data_dir,
+        validation_split=0.2,
+        subset="validation",
+        seed=123,
+        image_size=(img_height, img_width),
+        batch_size=batch_size)
 
-val_ds = tf.keras.utils.image_dataset_from_directory(
-    data_dir,
-    validation_split=0.2,
-    subset="validation",
-    seed=123,
-    image_size=(img_height, img_width),
-    batch_size=batch_size)
+    class_names = train_ds.class_names
+    print(class_names)
 
-class_names = train_ds.class_names
-print(class_names)
+    epochs = 12
 
-epochs = 12
+    # Próba załadowania moedlu
+    model = load_model()
 
-# Próba załadowania moedlu
-model = None
-model = load_model()
+    # Jeżeli nie ma to liczymy z podanymi parametrami i zpaisujemy do pliku
+    if model:
+        print("Model loaded")
+    else:
+        print("MODEL NOT LOADED")
+        model = create_trained_model(epochs, train_ds, val_ds)
+        save_model(model)
 
-# Jeżeli nie ma to liczymy z podanymi parametrami i zpaisujemy do pliku
-if not model:
-    model = create_trained_model(epochs, train_ds, val_ds)
-    save_model(model)
+    return model
 
-for name in class_names:
-    for i in range (1,7):
-        path = "./Test/"+str(name) + str(i) + ".jpg"
-        evaluate(model, path, name)
