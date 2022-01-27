@@ -123,5 +123,5 @@ def evaluate(path, real):
 
     score = tf.nn.softmax(predictions[0])
 
-    return " {} z {:.2f} pewnością.".format( class_names[np.argmax(score)], 100 * np.max(score))
+    return " {} with {:.2f} certainty.".format( class_names[np.argmax(score)], 100 * np.max(score))
 
