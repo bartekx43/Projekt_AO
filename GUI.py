@@ -55,11 +55,11 @@ style.configure("TCombobox", fieldbackground= "#0c2a56", background= "white", fo
 combo = Combobox(window)
 combo['values']= ('sea', 'forest', 'glacier', 'street', '--choose category--')
 combo.current(4) #set the selected item
-combo.place(relx = 0.45, rely = 0.5, anchor = CENTER) 
+combo.place(relx = 0.45, rely = 0.6, anchor = CENTER)
 
 
 btnChooseImage = Button(window, text="Choose file", command=clickedImageChoosing, style="TButton")
-btnChooseImage.place(relx = 0.55, rely = 0.5, anchor = CENTER)
+btnChooseImage.place(relx = 0.55, rely = 0.6, anchor = CENTER)
 
 
 czarneImage = "bgimages/czarne.png"
@@ -69,11 +69,11 @@ wybraneZdjLabel.place(relx = 0.5, rely = 0.3, anchor = CENTER)
 
 
 btnCount = Button(window, text="Send to detect", command=clickedSend, style="TButton")
-btnCount.place(relx = 0.5, rely = 0.6, anchor = CENTER)
+btnCount.place(relx = 0.5, rely = 0.7, anchor = CENTER)
 
 
 textResultLabel = Label(window, text="")
-textResultLabel.place(relx = 0.5, rely = 0.7, anchor = CENTER) 
+textResultLabel.place(relx = 0.5, rely = 0.8, anchor = CENTER)
 
 
 window.mainloop()
